@@ -1,5 +1,12 @@
 #pragma once
-
+#include <iostream>
+#include <iomanip>
+#include"ComplexNumber.h"
+#ifndef MATRIX_H
+#define MATRIX_H
+/*
+	У меня не работал доступ к переменным через friend, когда у меня поля были приватные  
+*/
 template <class Template>
 class Matrix
 {
@@ -8,10 +15,14 @@ public:
 	Matrix(int rows, int colums);
 	~Matrix();
 	void resize(int rows, int colums);
-	friend std::ostream& operator<<(std::ostream&  OurStream, Matrix<Template>& OurObj);
-	friend std::istream& operator>>(std::istream&  OurStream, Matrix<Template>& OurObj);
+	template<class Template>
+	friend std::ostream& operator<<(std::ostream& OurStream, Matrix<Template>& OurObj);
+	template<class Template>
+	friend std::istream& operator>>(std::istream& OurStream, Matrix<Template>& OurObj);
+	template<class Template>
 	friend Matrix<Template>& operator-(Matrix<Template>& Left, Matrix<Template>& Right);
 	Matrix<Template>& operator=(Matrix<Template>& Right);
+	void rand_value();
 private:
 
 	Template** OurMatrix;
@@ -19,13 +30,13 @@ private:
 };
 
 template <class Template>
-inline std::ostream& operator<<(std::ostream& OurStream, Matrix<Template>& OurObj)
+inline std::ostream& operator<<(std::ostream& OurStream,  Matrix<Template> & OurObj)
 {
 	try {
 		if (OurObj.OurMatrix != nullptr) {
 			for (int i = 0; i < OurObj.rows; i++) {
 				for (int j = 0; j < OurObj.colums; j++) {
-					OurStream << OurObj.OurMatrix[i][j];
+					OurStream << std::setprecision(2) << OurObj.OurMatrix[i][j] << ' ';
 				}
 				OurStream << '\n';
 			}
@@ -39,8 +50,9 @@ inline std::ostream& operator<<(std::ostream& OurStream, Matrix<Template>& OurOb
 	}
 	return OurStream;
 }
+
 template <class Template>
-inline std::istream& operator>>(std::istream& OurStream, Matrix<Template>& OurObj)
+inline std::istream& operator>>(std::istream& OurStream, Matrix<Template> & OurObj)
 {
 	try {
 		if (OurObj.OurMatrix != nullptr) {
@@ -57,18 +69,18 @@ inline std::istream& operator>>(std::istream& OurStream, Matrix<Template>& OurOb
 	catch (const char* ExceptionString) {
 		std::cout << ExceptionString;
 	}
-		return OurStream;
+	return OurStream;
 }
 
 
 
 
 template <class Template>
-inline Matrix<Template>& operator-(Matrix<Template>& Left, Matrix<Template>& Right)
+inline Matrix<Template>& operator-(Matrix<Template> & Left,  Matrix<Template> & Right)
 {
 	static Matrix <Template> Result;
 	try {
-		if (Left.OurMatrix != nullptr && Right.OurMatrix !=nullptr) {
+		if (Left.OurMatrix != nullptr && Right.OurMatrix != nullptr) {
 			if (Right.rows != Left.rows || Right.colums != Left.colums) {
 				throw "Left Size != Right Size\n";
 			}
@@ -111,6 +123,17 @@ inline Matrix<Template>& Matrix<Template>::operator=(Matrix<Template>& Right)
 	}
 }
 
+
+inline void Matrix<ComplexNumber>::rand_value()
+{
+	for (int i = 0; i < this->rows; i++) {
+		for (int j = 0; j < this->colums; j++) {
+			this->OurMatrix[i][j].rand_value();
+		}
+
+	}
+}
+
 template<class Template>
 inline Matrix<Template>::Matrix()
 {
@@ -130,8 +153,8 @@ inline Matrix<Template>::Matrix(int rows, int colums)
 
 template<class Template>
 inline Matrix<Template>::~Matrix()
-{ 
-	if (this->OurMatrix[0] != nullptr&& this->OurMatrix != nullptr) {
+{
+	if (this->OurMatrix != nullptr) {
 		for (int i = 0; i < this->rows; i++) {
 			delete[] this->OurMatrix[i];
 			this->OurMatrix[i] = nullptr;
@@ -151,4 +174,8 @@ inline void Matrix<Template>::resize(int rows, int colums)
 		this->OurMatrix[i] = new Template[colums];
 	}
 }
+
+#endif // !MATRIX.H
+
+
 

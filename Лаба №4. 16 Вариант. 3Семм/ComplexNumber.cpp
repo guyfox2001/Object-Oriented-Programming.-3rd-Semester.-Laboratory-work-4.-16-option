@@ -27,11 +27,20 @@ double& ComplexNumber::get_Im()
 void ComplexNumber::set_Rm(double Rm)
 {
 	this->Real = Rm;
+	this->update_MathematicalNotation();
 }
 
 void ComplexNumber::set_Im(double Im)
 {
 	this->ImaginaryÑoefficient = Im;
+	this->update_MathematicalNotation();
+}
+
+void ComplexNumber::rand_value()
+{
+	this->Real = rand() % 15 + 1;
+	this->ImaginaryÑoefficient = rand() % 15 + 1;
+	this->update_MathematicalNotation();
 }
 
 ComplexNumber& ComplexNumber::operator=(ComplexNumber& Right)
@@ -44,7 +53,9 @@ ComplexNumber& ComplexNumber::operator=(ComplexNumber& Right)
 
 void ComplexNumber::update_MathematicalNotation()
 {
-	this->MathematicalNotation = std::to_string(this->Real) + ' ' + '+' + std::to_string(this->ImaginaryÑoefficient) + 'i';
+	this->MathematicalNotation = std::to_string(this->Real) + ' ';
+	if (this->ImaginaryÑoefficient < 0) this->MathematicalNotation += "- " + std::to_string(abs(this->ImaginaryÑoefficient)) + 'i';
+	else this->MathematicalNotation += "+ " + std::to_string(this->ImaginaryÑoefficient) + 'i';
 }
 
 std::ostream& operator<<(std::ostream& OurStream, ComplexNumber& OurObj)

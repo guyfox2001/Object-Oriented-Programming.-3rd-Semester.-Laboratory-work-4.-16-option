@@ -3,6 +3,8 @@
 #include <iomanip>
 #include <string>
 
+#ifndef COMPLEXNUMBER_H
+#define COMPLEXNUMBER_H
 class ComplexNumber
 {
 public:
@@ -12,11 +14,12 @@ public:
 	double& get_Im();
 	void set_Rm(double Rm);
 	void set_Im(double Im);
-	friend std::ostream& operator<<(std::ostream&  OurStream, ComplexNumber& OurObj);
-	friend std::istream& operator>>(std::istream&  OurStream, ComplexNumber& OurObj);
+	void rand_value();
+	friend std::ostream& operator<<(std::ostream& OurStream, ComplexNumber& OurObj);
+	friend std::istream& operator>>(std::istream& OurStream, ComplexNumber& OurObj);
 	friend ComplexNumber& operator-(ComplexNumber& Left, ComplexNumber& Right);
 	ComplexNumber& operator=(ComplexNumber& Right);
-	
+
 private:
 	double Real;
 	double Imaginary—oefficient;
@@ -24,4 +27,6 @@ private:
 
 	void update_MathematicalNotation();
 };
+#endif // !COMPLEXNUMBER_H
+
 

@@ -140,15 +140,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ComplexNumber.cpp" />
+    <ClCompile Include="IntervalNumber.cpp" />
     <ClCompile Include="main.cpp">
       <EnableParallelCodeGeneration Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</EnableParallelCodeGeneration>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComplexNumber.h" />
-    <ClInclude Include="Matrix.h">
-      <DeploymentContent>true</DeploymentContent>
-    </ClInclude>
+    <ClInclude Include="IntervalNumber.h" />
+    <ClInclude Include="Matrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -21,12 +21,18 @@
     <ClCompile Include="ComplexNumber.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="IntervalNumber.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComplexNumber.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Matrix.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="IntervalNumber.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
