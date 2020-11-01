@@ -37,6 +37,16 @@ void IntervalNumber::set_RightNumber(double RightNumber)
 	this->update_MathematicalNotation();
 }
 
+void IntervalNumber::rand_value()
+{
+	this->LeftNumber = rand() % 15;
+	do
+	{
+		this->RightNumber = rand() % 16;
+	} while (this->LeftNumber >= this->RightNumber);
+	this->update_MathematicalNotation();
+}
+
 IntervalNumber& IntervalNumber::operator=(IntervalNumber& Right)
 {
 	this->LeftNumber = Right.LeftNumber;

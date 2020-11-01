@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include"ComplexNumber.h"
+#include"IntervalNumber.h"
 #ifndef MATRIX_H
 #define MATRIX_H
 /*
@@ -125,6 +126,16 @@ inline Matrix<Template>& Matrix<Template>::operator=(Matrix<Template>& Right)
 
 
 inline void Matrix<ComplexNumber>::rand_value()
+{
+	for (int i = 0; i < this->rows; i++) {
+		for (int j = 0; j < this->colums; j++) {
+			this->OurMatrix[i][j].rand_value();
+		}
+
+	}
+}
+
+inline void Matrix<IntervalNumber>::rand_value()
 {
 	for (int i = 0; i < this->rows; i++) {
 		for (int j = 0; j < this->colums; j++) {

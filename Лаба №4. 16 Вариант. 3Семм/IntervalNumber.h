@@ -13,6 +13,7 @@ public:
 	double& get_RightNumber();
 	void set_LeftNumber(double LeftNumber);
 	void set_RightNumber(double RightNumber);
+	void rand_value();
 	friend std::ostream& operator<<(std::ostream& OurStream, IntervalNumber& OurObj);
 	friend std::istream& operator>>(std::istream& OurStream, IntervalNumber& OurObj);
 	friend IntervalNumber& operator-(IntervalNumber& Left, IntervalNumber& Right);

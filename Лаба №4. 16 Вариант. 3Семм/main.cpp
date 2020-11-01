@@ -26,6 +26,21 @@ int main(int argc, char * argv[]) {
 	CompMatrixC = CompMatrixA - CompMatrixB;
 	cout << endl << CompMatrixC;
 
+	cout << "Now the matrix A of interval numbers will be introduced \n";
+	/*cin >> CompMatrixA;*/
+	IntervalMatrixA.rand_value();
+	cout << endl << IntervalMatrixA;
+	cout << "Now the matrix B of interval numbers will be introduced \n";
+	/*cin >> CompMatrixB;*/
+	IntervalMatrixB.rand_value();
+	cout << endl << IntervalMatrixB;
+
+
+
+	IntervalMatrixC = IntervalMatrixA - IntervalMatrixB;
+	cout << endl << IntervalMatrixC;
+	system("pause");
+
 
 	
 }
